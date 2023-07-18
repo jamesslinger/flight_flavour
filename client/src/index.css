@@ -1,0 +1,207 @@
+html {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-attachment: fixed;
+  background-origin: inital;
+  background-repeat: no repeat;
+  min-height: 100vh;
+  background: rgb(255,234,32);
+  background: linear-gradient(to top right, rgba(255,234,32,1) 0%, rgba(157,241,223,1) 49%, rgba(0,116,255,1) 100%);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* SEARCH FORM */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: auto;
+}
+
+h4 {
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.sf-section {
+  min-width: 100%;
+  margin: 2rem auto 4rem;
+  max-width: max-content;
+  color: #fff;
+}
+
+.sf-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 50vw;
+  max-width: 97vw;
+  margin: 30px auto;
+  padding: 1.5rem 2rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+}
+
+#tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
+  font-size: 0.75rem;
+  padding: 0.75rem;
+}
+
+@media only screen and (max-width: 500px) {
+  #sf-bg {
+    max-width: 80%;
+  }
+
+  h4 {
+    font-size: 0.7rem;
+  }
+
+  #sf-auto, #sf-budget, #sf-fly {
+    min-width: none;
+    max-width: 85%;
+    font-size: 0.7rem;
+  }
+
+  #sf-btn {
+    font-size: 0.7rem;
+  }
+
+  #tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
+    font-size: 0.55rem;
+    padding: 10px;
+  }
+
+}
+
+@media only screen and (max-width: 380px) {
+  #sf-bg {
+    width: 95vw;
+    padding-left: 0.2rem; 
+    padding-right: 0.2rem;
+    padding-bottom: 1.8rem;
+  }
+
+  h4 {
+    font-size: 0.7rem;
+  }
+
+  #sf-auto, #sf-budget, #sf-fly {
+    min-width: none;
+    max-width: 95%;
+    font-size: 0.7rem;
+  }
+
+  #sf-btn {
+    font-size: 0.7rem;
+  }
+
+  #tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
+    font-size: 0.50rem;
+    padding: 8px 4px;
+  }
+}
+
+
+/*  RESULTS PAGE  */
+
+.dialog-content {
+  scroll-behavior: smooth; 
+}
+
+.dialog-bg {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+@media only screen and (max-width: 900px) {
+
+  #dialog-content {
+    padding: 6px;
+  }
+
+  #opt-card {
+    height: auto;
+  }
+
+  #arrow {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #details-chip {
+    padding: 0;
+  }
+
+  #divider {
+    font-size: 10px;
+  }
+
+  #info-btn {
+    font-size: 0.7rem;
+    padding: 10px 6px;
+    margin: 6px;
+  }
+
+  #btn-stack {
+    direction: row;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+  #opt-chip {
+    font-size: 12px;
+  }
+
+  #details-chip {
+    font-size: 10px;
+  }
+
+  #info-btn {
+    font-size: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+}
+
+
+/* HEADER */
+
+.nav-bar, .nav-bar button {
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+/* FOOTER */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+footer, footer a {
+  color: #fff;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
