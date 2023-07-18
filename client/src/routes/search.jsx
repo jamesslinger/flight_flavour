@@ -199,14 +199,14 @@ export default function SearchForm() {
           </Box> 
             <Button
               id="sf-btn"
-              sx={{ width: '90%', border: '1px solid', p: 1, fontSize: 16, textShadow: '1px 1px 4px rgba(0, 0, 0, 0.75)' }}
+              sx={{ width: '90%', border: '1px solid', px: 1, py: 1.5, fontSize: 16, textShadow: '1px 1px 4px rgba(0, 0, 0, 0.75)' }}
               variant="outlined"
               type="submit"
               onClick={() => {
                 airportList.length > 0 && searchFormParams()
               }}
             >
-              Show Me The Deals
+              Get Flights
             </Button>
         
       </Box>
