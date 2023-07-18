@@ -38,7 +38,13 @@ const convertTime = (date) => {
 export default function OptionCard(props) {
     return (
         <Card id='opt-card' elevation={6}
-         sx={{ display: 'flex', my: 2, mx: 'auto', borderRadius: 4, backgroundColor: 'rgba(255, 255, 255, 0.7)', justifyContent: 'center' }}
+         sx={{ 
+          display: 'flex',
+          my: 2, mx: 'auto',
+          borderRadius: 4,
+          backgroundColor: 'rgba(255, 255, 255, 0.7)',
+          justifyContent: 'center'
+        }}
         >
           <CardActionArea>
             <CardContent>
@@ -46,55 +52,73 @@ export default function OptionCard(props) {
               <Stack direction='column' spacing={1}
                sx={{display: 'flex', justifyContent: 'center', alignItems: 'center' , mx: 'auto', p: 1}}>
                 <Stack direction={{xs: 'column', md: 'row'}} spacing={1}>
-                  <Chip id="opt-chip" variant="outlined" color="primary"
+                  <Chip id="opt-chip" variant="outlined"
                    icon={<FlightTakeoffSharpIcon />}
                    label={`${props.data.cityFrom} (${props.data.flyFrom})`} 
                    sx={{ border: '1px solid', fontSize: '1.2rem', py: 0.5, boxShadow: 1,
                     height: 'auto', '& .MuiChip-label': {
                     display: 'block',
                     whiteSpace: 'normal',
+                    color: '#000',
+                    fontWeight: 500
                     } }}
                   />
-                  <DoubleArrowSharpIcon id='arrow' color="primary"
-                   sx={{ fontSize: 34, display: 'flex', justifyContent: 'center', alignItems: 'center' , mx: 'auto', }}
+                  <DoubleArrowSharpIcon id='arrow'
+                   sx={{
+                    fontSize: 34,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    mx: 'auto',
+                    color: '#000',
+                    fontWeight: 500
+                    }}
                   />
-                  <Chip id="opt-chip" variant="outlined" color="primary"
+                  <Chip id="opt-chip" variant="outlined"
                    icon={<FlightLandSharpIcon />}
                    label={`${props.data.cityTo} (${props.data.flyTo})`}
                    sx={{ border: '1px solid', fontSize: '1.2rem', py: 0.5, boxShadow: 1, 
                     height: 'auto', '& .MuiChip-label': {
                     display: 'block',
                     whiteSpace: 'normal',
+                    color: '#000',
+                    fontWeight: 500
                     } }}
                   />
                 </Stack>
                 <Divider flexItem id='divider' sx={{ my: 1, fontSize: 11 }}>Details</Divider>
                 <Stack direction={{xs: 'column', md: 'row'}} spacing={1} >
-                  <Chip id='details-chip' variant="outlined" color="primary"
+                  <Chip id='details-chip' variant="outlined"
                    icon={<CalendarMonthSharpIcon />}
                    label={convertDate(props.data.utc_departure)}
                    sx={{ border: '1px solid', fontSize: 12, boxShadow: 1,
                     height: 'auto', '& .MuiChip-label': {
                     display: 'block',
                     whiteSpace: 'normal',
+                    color: '#000',
+                    fontWeight: 500
                     } }}
                   />
-                  <Chip id='details-chip' variant="outlined" color="primary"
+                  <Chip id='details-chip' variant="outlined"
                    icon={<AccessTimeSharpIcon />}
                    label={convertTime(props.data.utc_departure)}
                    sx={{ border: '1px solid',  fontSize: 12, boxShadow: 1,
                     height: 'auto', '& .MuiChip-label': {
                     display: 'block',
                     whiteSpace: 'normal',
+                    color: '#000',
+                    fontWeight: 500
                     } }}
                   />
-                  <Chip id='details-chip' variant="outlined" color="primary"
+                  <Chip id='details-chip' variant="outlined"
                    icon={<CurrencyPoundSharpIcon />}
                    label={props.data.price}
                    sx={{ border: '1px solid', fontSize: 12, boxShadow: 1,
                     height: 'auto', '& .MuiChip-label': {
                     display: 'block',
                     whiteSpace: 'normal',
+                    color: '#000',
+                    fontWeight: 500
                     } }}
                   />
                 </Stack>
@@ -104,7 +128,16 @@ export default function OptionCard(props) {
                 <Button id='info-btn' variant="outlined"
                  href={props.data.deep_link}
                  startIcon={<AirplaneTicketOutlinedIcon />}
-                 sx={{ border: '1px dashed', fontSize: 12, boxShadow: 1, p: 2, mx: 2, whiteSpace: 'normal' }}
+                 sx={{ 
+                  border: '1px dashed',
+                  fontSize: 12,
+                  boxShadow: 1,
+                  p: 2,
+                  mx: 2,
+                  whiteSpace: 'normal',
+                  color: '#000',
+                  fontWeight: 500
+                 }}
                 >
                   Details & Book
                 </Button>

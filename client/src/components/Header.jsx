@@ -108,6 +108,7 @@ export default function NavBar(props) {
               ))}
             </Menu>
           </Box>
+          
           <FlightTakeoffIcon className="nav-icon"
            sx={{ display: { xs: 'none', sm: 'flex', md: 'none' }, mr: 0.5, color: '#fff' }}
           />

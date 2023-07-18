@@ -211,7 +211,9 @@ export default function ResultCard(props) {
                   fontWeight: 400,
                   p: 2,
                   boxShadow: 2,
-                  backgroundColor: 'rgba(255, 255, 255, 0.7)'
+                  backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                  color: '#000',
+                  fontWeight: 500
                 }}  
               />
             </DialogTitle>
