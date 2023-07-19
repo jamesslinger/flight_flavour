@@ -46,7 +46,7 @@ h4 {
   align-items: center;
   min-width: 50vw;
   max-width: 97vw;
-  margin: 30px auto;
+  margin: 1.2rem auto;
   padding: 1.5rem 2rem 3rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
@@ -117,8 +117,12 @@ h4 {
 
 /*  RESULTS PAGE  */
 
+#result-grid {
+  margin-top: 0.2rem;
+}
+
 .dialog-content {
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
 }
 
 .dialog-bg {
@@ -164,11 +168,11 @@ h4 {
 @media only screen and (max-width: 450px) {
 
   #opt-chip {
-    font-size: 12px;
+    font-size: 1rem;
   }
 
   #details-chip {
-    font-size: 10px;
+    font-size: 0.7rem;
   }
 
   #info-btn {
@@ -188,8 +192,25 @@ h4 {
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* FOOTER */
+.logo-img1, .logo-img2 {
+padding-right: 0.5rem;
+}
 
+@media only screen and (max-width: 900px) {
+  .logo-img1 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .logo-img2 {
+    display: none;
+  }
+}
+
+
+
+/* FOOTER */
 
 footer {
   bottom: 0;
