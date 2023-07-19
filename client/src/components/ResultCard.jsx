@@ -114,12 +114,11 @@ export default function ResultCard(props) {
            sx={{ 
             maxWidth: 420,
             height: 325,
-            background: `url(${'../images/'}${props.results[0].cityCodeTo}.jpg)`,
+            background: `url('${'../images/'}${props.results[0].cityCodeTo}.jpg'), url('../fallback.jpg')`, 
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
             }}
-            
           >
             <CardContent sx={{
               position: 'absolute',
