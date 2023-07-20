@@ -9,10 +9,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import { maxHeight } from "@mui/system";
 
 
 function HideOnScroll(props) {
@@ -49,9 +47,6 @@ export default function NavBar(props) {
     <AppBar className="nav-bar" position="sticky" color="transparent" elevation={0}>
       <Container>
         <Toolbar>
-        {/* <FlightTakeoffIcon className="nav-icon" color="action"
-         sx={{ display: { xs: 'none', md: 'flex' }, mr: 0.5, color: '#fff' }}
-        /> */}
         <img className="logo-img1" src="../fly_lt.png" width={40} height={40} alt="logo" />
           <Typography
             variant="h6"
@@ -102,7 +97,7 @@ export default function NavBar(props) {
                   <Button
                     key={page.name}
                     href={page.link}
-                    sx={{ color: 'black', fontSize: '0.7rem'}}
+                    sx={{ color: 'black', fontSize: '0.7rem', justifyContent: 'left' }}
                   >
                     {page.name}
                   </Button>
@@ -110,10 +105,6 @@ export default function NavBar(props) {
               ))}
             </Menu>
           </Box>
-          
-          {/* <FlightTakeoffIcon className="nav-icon"
-           sx={{ display: { xs: 'none', sm: 'flex', md: 'none' }, mr: 0.5, color: '#fff' }}
-          /> */}
           <img className="logo-img2" src="../fly_lt.png" width={35} height={35} alt="logo" />
           <Typography
             variant="h6"
