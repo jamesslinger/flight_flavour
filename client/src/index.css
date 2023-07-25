@@ -8,7 +8,7 @@ body {
   background-attachment: fixed;
   background-origin: inital;
   background-repeat: no repeat;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: rgb(255,234,32);
   background: linear-gradient(to top right, rgba(255,234,32,1) 0%, rgba(157,241,223,1) 49%, rgba(0,116,255,1) 100%);
   margin-top: 0;
@@ -17,12 +17,12 @@ body {
 
 
 /* SEARCH FORM */
+
 .search-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
   overflow: auto;
 }
 
@@ -44,7 +44,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 50vw;
+  min-width: 550px;
   max-width: 97vw;
   margin: 1.2rem auto;
   padding: 1.5rem 2rem 3rem;
@@ -58,6 +58,12 @@ h4 {
 #tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
   font-size: 0.75rem;
   padding: 0.75rem;
+}
+
+@media only screen and (max-width: 700px){
+  #sf-bg {
+    min-width: 50vw;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -181,6 +187,64 @@ h4 {
     padding-bottom: 10px;
   }
 
+}
+
+/* ABOUT PAGE */
+
+.about-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  margin: 1.2rem auto;
+  padding: 1.5rem 2rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+}
+
+.about-section p, .fd-title, .fd-text {
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.85);
+  padding: 0.5rem 1.5rem 0;
+}
+
+.about-section a[href] {
+  color: #fff;
+}
+
+.about-section a[href]:hover {
+  color: black;
+}
+
+
+/* CONTACT PAGE */
+
+.contact-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  margin: 1.2rem auto;
+  padding: 1.5rem 2rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+}
+
+.contact-bg p {
+  margin: auto;
+  padding: 1rem 1.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.85);
 }
 
 

@@ -9,8 +9,8 @@ import {
 } from "react-router-dom";
 import NavBar from "./components/Header";
 import Footer from "./components/Footer";
-import SearchForm from "./routes/search"
-import ResultsPage from "./routes/results";
+import SearchForm from "./components/SearchForm"
+import ResultsPage from "./components/ResultsPage";
 import { resultsLoader } from "./components/Loader"
 import "./index.css";
 import ContactForm from "./components/ContactForm";
