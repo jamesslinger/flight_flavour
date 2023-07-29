@@ -7,10 +7,10 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { Link } from "react-router-dom";
 
 
 function HideOnScroll(props) {
@@ -24,9 +24,9 @@ function HideOnScroll(props) {
 }
 
 const pages = [
-  { name: 'About', link: '/about'},
-  { name: 'Contact', link: '/contact'},
-  { name: 'Flight Search', link: '/'}
+  { name: 'ABOUT', link: '/about'},
+  { name: 'CONTACT', link: '/contact'},
+  { name: 'FLIGHT SEARCH', link: '/'}
 ];
 
 export default function NavBar(props) {
@@ -95,13 +95,7 @@ export default function NavBar(props) {
               >
                 {pages.map((page) => (
                   <MenuItem key={page.name}>
-                    <Button
-                      key={page.name}
-                      href={page.link}
-                      sx={{ color: 'black', fontSize: '0.7rem', justifyContent: 'left' }}
-                    >
-                      {page.name}
-                    </Button>
+                    <Link to={page.link} key={page.name} className="nav-link">{page.name}</Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -128,13 +122,7 @@ export default function NavBar(props) {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Button
-                  key={page.name}
-                  href={page.link}
-                  sx={{ ml: 'auto', color: 'white', display: 'block' }}
-                >
-                  {page.name}
-                </Button>
+                <Link to={page.link} key={page.name} className="nav-link">{page.name}</Link>
               ))}
             </Box>
           </Toolbar>

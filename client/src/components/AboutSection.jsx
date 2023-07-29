@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Box from "@mui/material/Box";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,6 +13,7 @@ export default function AboutSection() {
         <>
             <AnimatePresence mode="wait">
                 <motion.div 
+                    layout
                     key={uuidv4()}
                     initial={{ opacity: 0, transition: { delay: 0.5, duration: 1.5, ease } }}
                     animate={{ opacity: 1, transition: { delay :0.5, duration: 1.5, ease } }}
@@ -35,7 +37,7 @@ export default function AboutSection() {
                         <motion.p>You can book any cheap flight deal you find with us or anyone else, It's upto you.
                         Flightflavour.com is an affiliate for <a target="_blank" rel="noopener external" href="https://www.kiwi.com/en/pages/content/about">kiwi.com</a>, who are fully regulated under EU law, so all bookings are made and confirmed by them.
                         For more information on their terms & conditions, please visit there section <a target="_blank" rel="noopener external" href="https://www.kiwi.com/en/pages/content/legal">here</a>.</motion.p>
-                        <motion.p>If you have any questions or suggestions for our site, please visit our <a href="/contact">contact page</a>.</motion.p>
+                        <motion.p>If you have any questions or suggestions for our site, please visit our <Link to={'/contact'}>contact page</Link>.</motion.p>
                         <motion.p>Thanks for stopping by, I hope you enjoyed your stay.</motion.p>
                     </Box>
                 </motion.div>
