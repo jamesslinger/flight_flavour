@@ -28,8 +28,8 @@ export default function AboutSection() {
                         >
                             ABOUT US
                         </motion.h4>
-                        <motion.p>Have you every fancied a trip away somewhere but have no idea where you want to go?</motion.p>
-                        <motion.p>Do you find though of trawling through travel website for a quick look at cheap flights daunting?</motion.p>
+                        <motion.p>Have you ever fancied a trip away somewhere but have no idea where you want to go?</motion.p>
+                        <motion.p>Do you find the thought of trawling through the internet for a quick look at cheap flight deals daunting?</motion.p>
                         <motion.p>Well you're not alone.</motion.p>
                         <motion.p>Flightflavour.com was created to help you sample those sweet cheap flight deals without the hassle.</motion.p>
                         <motion.p>We're not a travel agent nor affiliated with any particular airline,
