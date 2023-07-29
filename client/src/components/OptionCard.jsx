@@ -14,6 +14,8 @@ import Button from "@mui/material/Button";
 import CurrencyPoundSharpIcon from '@mui/icons-material/CurrencyPoundSharp';
 import CalendarMonthSharpIcon from '@mui/icons-material/CalendarMonthSharp';
 import AccessTimeSharpIcon from '@mui/icons-material/AccessTimeSharp';
+import { v4 as uuidv4 } from 'uuid';
+import { motion } from 'framer-motion';
 
 
 const convertDate = (date) => {
@@ -36,11 +38,35 @@ const convertTime = (date) => {
 }
 
 export default function OptionCard(props) {
+
+  const variants = {
+    container: {
+        animate: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    },
+    card: {
+        initial: {
+            opacity: 0,
+            x: -50
+        },
+
+        animate: {
+            opacity: 1,
+            x: 0
+        }
+    }
+  };
+
     return (
+      <motion.div variants={variants.card}>
         <Card id='opt-card' elevation={6}
          sx={{ 
           display: 'flex',
-          my: 2, mx: 'auto',
+          my: 2,
+          mx: 'auto',
           borderRadius: 4,
           backgroundColor: 'rgba(255, 255, 255, 0.7)',
           justifyContent: 'center'
@@ -50,7 +76,7 @@ export default function OptionCard(props) {
             <CardContent>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , mx: 'auto' }}>
               <Stack direction='column' spacing={1}
-               sx={{display: 'flex', justifyContent: 'center', alignItems: 'center' , mx: 'auto', p: 1}}>
+               sx={{display: 'flex', justifyContent: 'center', alignItems: 'center' , mx: 'auto', p: 0.5}}>
                 <Stack direction={{xs: 'column', md: 'row'}} spacing={1}>
                   <Chip id="opt-chip" variant="outlined"
                    icon={<FlightTakeoffSharpIcon />}
@@ -146,5 +172,6 @@ export default function OptionCard(props) {
             </CardContent>
           </CardActionArea>
         </Card>
-      );
+      </motion.div>
+    );
 }

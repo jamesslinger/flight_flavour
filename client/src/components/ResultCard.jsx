@@ -106,9 +106,32 @@ export default function ResultCard(props) {
   const CustomPaperBG = (props) => {
     return <Paper style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', outline: 'none' }} {...props} />
   };
+
+  const variants = {
+    container: {
+        animate: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    },
+    card: {
+        initial: {
+            opacity: 0,
+            x: -50
+        },
+
+        animate: {
+            opacity: 1,
+            x: 0
+        }
+    }
+  };
    
   return (
-      <React.Fragment>
+      <motion.div
+        variants={variants.card}
+      >
         <CardActionArea onClick={handleOpen('paper')}>
           <Card elevation={8}
            sx={{ 
@@ -174,6 +197,11 @@ export default function ResultCard(props) {
             </CardContent>
           </Card>
         </CardActionArea>
+        <motion.div
+            initial='initial'
+            animate='animate'
+            variants={variants.container}
+        >
           <Dialog
             open={open}
             onClose={handleClose}
@@ -202,7 +230,7 @@ export default function ResultCard(props) {
                   <CloseIcon />
                 </Fab>
               ) : null}
-            <DialogTitle >
+            <DialogTitle>
               <Chip color='primary' variant="outlined"
                 label={props.cityTo}
                 icon={<PlaceSharpIcon />}
@@ -217,40 +245,46 @@ export default function ResultCard(props) {
                 }}  
               />
             </DialogTitle>
-            <DialogContent
-              dividers={scroll ==='paper'}
-              id='dialog-content'
-              className="dialog-content"
-              sx={{
-                px: 5,
-                scrollbarWidth: 'thin',
-                '&::-webkit-scrollbar': {
-                  width: '0.4em',
-                },
-                '&::-webkit-scrollbar-track': {
-                  background: "#f1f1f1",
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: '#888',
-                },
-                '&::-webkit-scrollbar-thumb:hover': {
-                  background: '#555'
-                }}}
+            <motion.div 
+              initial='initial'
+              animate='animate'
+              variants={variants.container}
             >
-              <div id="back-to-top-anchor" />
-              <DialogContentText
-                id='dialog-description'
-                ref={descriptionElementRef}
-                tabIndex={-1}
-                component={'span'}
+              <DialogContent
+                dividers={scroll ==='paper'}
+                id='dialog-content'
+                className="dialog-content"
+                sx={{
+                  px: 5,
+                  scrollbarWidth: 'thin',
+                  '&::-webkit-scrollbar': {
+                    width: '0.4em',
+                  },
+                  '&::-webkit-scrollbar-track': {
+                    background: "#f1f1f1",
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: '#888',
+                  },
+                  '&::-webkit-scrollbar-thumb:hover': {
+                    background: '#555'
+                  }}}
               >
-                {props.results.map((option) => {
-                  return (
-                    <OptionCard key={uuidv4()} data={option} />
-                  )
-                })}
-              </DialogContentText>
-            </DialogContent>
+                <div id="back-to-top-anchor" />
+                <DialogContentText
+                  id='dialog-description'
+                  ref={descriptionElementRef}
+                  tabIndex={-1}
+                  component={'span'}
+                >
+                  {props.results.map((option) => {
+                    return (
+                        <OptionCard key={uuidv4()} data={option} />
+                    )
+                  })}
+                </DialogContentText>
+              </DialogContent>
+            </motion.div>
             <ScrollToTop {...props}>
               <Fab size="small"
                 aria-label="scroll back to top"
@@ -259,7 +293,8 @@ export default function ResultCard(props) {
                 <KeyboardArrowUpIcon />
               </Fab>
             </ScrollToTop>     
-          </Dialog> 
-      </React.Fragment>
+          </Dialog>
+        </motion.div>     
+      </motion.div>
   );
 }

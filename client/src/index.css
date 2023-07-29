@@ -1,3 +1,7 @@
+* {
+  scroll-behavior: smooth;
+}
+
 html {
   box-sizing: border-box;
   text-align: center;
@@ -23,7 +27,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: auto;
 }
 
 h4 {
@@ -62,23 +65,25 @@ h4 {
 
 @media only screen and (max-width: 700px){
   #sf-bg {
-    min-width: 50vw;
+    min-width: 75vw;
   }
 }
 
 @media only screen and (max-width: 500px) {
   #sf-bg {
-    max-width: 80%;
+    max-width: 98%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h4 {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 
   #sf-auto, #sf-budget, #sf-fly {
     min-width: none;
     max-width: 85%;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 
   #sf-btn {
@@ -87,16 +92,16 @@ h4 {
 
   #tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
     font-size: 0.55rem;
-    padding: 10px;
+    padding: 1rem 6px;
   }
 
 }
 
 @media only screen and (max-width: 380px) {
   #sf-bg {
-    width: 95vw;
-    padding-left: 0.2rem; 
-    padding-right: 0.2rem;
+    
+    padding-left: auto; 
+    padding-right: auto;
     padding-bottom: 1.8rem;
   }
 
@@ -116,7 +121,14 @@ h4 {
 
   #tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
     font-size: 0.50rem;
-    padding: 8px 4px;
+    padding: 0.8rem 0.2rem;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  #tg-btn1, #tg-btn2, #tg-btn3, #tg-btn4, #tg-btn5 {
+    font-size: 0.50rem;
+    padding: 0.5rem;
   }
 }
 
@@ -125,10 +137,7 @@ h4 {
 
 #result-grid {
   margin-top: 0.2rem;
-}
-
-.dialog-content {
-  scroll-behavior: smooth;
+  margin-bottom: 2rem;
 }
 
 .dialog-bg {
@@ -140,10 +149,14 @@ h4 {
 
   #dialog-content {
     padding: 6px;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   #opt-card {
     height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   #arrow {
@@ -173,6 +186,11 @@ h4 {
 
 @media only screen and (max-width: 450px) {
 
+  #dialog-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   #opt-chip {
     font-size: 1rem;
   }
@@ -189,6 +207,12 @@ h4 {
 
 }
 
+@media only screen and (max-width: 350px) {
+  #dialog-content {
+    padding: 0.5rem;
+  }
+}
+
 /* ABOUT PAGE */
 
 .about-bg {
@@ -197,7 +221,7 @@ h4 {
   justify-content: center;
   align-items: center;
   max-width: 550px;
-  margin: 1.2rem auto;
+  margin: 1.2rem auto 2rem;
   padding: 1.5rem 2rem 3rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
@@ -206,18 +230,19 @@ h4 {
   backdrop-filter: blur(50px);
 }
 
-.about-section p, .fd-title, .fd-text {
+.about-bg p  {
   color: #fff;
   letter-spacing: 1px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.85);
-  padding: 0.5rem 1.5rem 0;
+  padding: 0.874rem 1.5rem;
+  margin: auto;
 }
 
-.about-section a[href] {
+.about-bg a[href] {
   color: #fff;
 }
 
-.about-section a[href]:hover {
+.about-bg a[href]:hover {
   color: black;
 }
 
@@ -230,7 +255,7 @@ h4 {
   justify-content: center;
   align-items: center;
   max-width: 550px;
-  margin: 1.2rem auto;
+  margin: 1.2rem auto 2rem;
   padding: 1.5rem 2rem 3rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
@@ -239,12 +264,17 @@ h4 {
   backdrop-filter: blur(50px);
 }
 
-.contact-bg p {
+.contact-bg p, .fd-title, .fd-text {
   margin: auto;
-  padding: 1rem 1.5rem;
+  padding: 1.75rem 1.5rem;
   color: #fff;
   letter-spacing: 1px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+.cf-bg {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
 }
 
 
@@ -290,4 +320,8 @@ footer, footer a {
   letter-spacing: 3px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   text-decoration: none;
+}
+
+footer p {
+  margin-top: 0;
 }
