@@ -19,7 +19,7 @@ export default function AboutSection() {
                     animate={{ opacity: 1, transition: { delay :0.5, duration: 1.5, ease } }}
                     exit={{ opacity: 0, transition: { delay: 0.5, duration: 1.5, ease } }}
                     >
-                    <Box className='about-bg' component={motion.div}>
+                    <Box id='about-bg' className='about-bg' component={motion.div}>
                         <motion.h4
                             key={uuidv4()}
                             initial={{ opacity: 0, transition: { delay: 0.5, duration: 1, ease } }}

@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 function HideOnScroll(props) {
@@ -45,7 +45,11 @@ export default function NavBar(props) {
   return (
     <>
       <HideOnScroll {...props}>
-      <AppBar className="nav-bar" position="sticky" color="transparent" elevation={0}>
+      <AppBar
+       className="nav-bar"
+       position="sticky"
+       color="transparent"
+       elevation={0}>
         <Container>
           <Toolbar>
           <img className="logo-img1" src="../fly_lt.png" width={40} height={40} alt="logo" />
@@ -73,7 +77,13 @@ export default function NavBar(props) {
                 onClick={handleOpenNavMenu}
                 color="#fff"
               >
-                <MenuIcon sx={{ color: '#fff', display: { xs: 'flex', md: 'none' } }} />
+                <MenuIcon
+                 sx={{ color: '#fff',
+                 display:
+                  { xs: 'flex',
+                  md: 'none'
+                  }}}
+                />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -95,7 +105,14 @@ export default function NavBar(props) {
               >
                 {pages.map((page) => (
                   <MenuItem key={page.name}>
-                    <Link to={page.link} key={page.name} className="nav-link">{page.name}</Link>
+                    <NavLink
+                     to={page.link}
+                     onClick={handleCloseNavMenu}
+                     key={page.name}
+                     className="nav-link"
+                    >
+                      {page.name}
+                    </NavLink>
                   </MenuItem>
                 ))}
               </Menu>
@@ -122,7 +139,13 @@ export default function NavBar(props) {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Link to={page.link} key={page.name} className="nav-link">{page.name}</Link>
+                <NavLink
+                 to={page.link}
+                 key={page.name}
+                 className="nav-link"
+                >
+                  {page.name}
+                </NavLink>
               ))}
             </Box>
           </Toolbar>
