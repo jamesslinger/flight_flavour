@@ -6,7 +6,7 @@ I often find it a hassle to think of affordable holiday destination so wanted a 
 The site is front-end only and utilises React Router to manage the API calls via client-side routing. My plans are to update the site with more useful features in the near future, 
 including:
 
-<del>- Adding About/Contact pages</del>
+~- Adding About/Contact pages~
 - Social media integrations
 - Quick Search or Detailed Search option
 - Account creation so you can save searches
