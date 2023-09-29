@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import {
-  Button,
   TextField,
   Autocomplete,
   MenuItem,
+  Button,
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import FlightTakeoffSharpIcon from '@mui/icons-material/FlightTakeoffSharp';
@@ -18,6 +18,8 @@ import { Form } from "react-router-dom";
 import { airports } from "./airports";
 import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
+import LoadingButton from '@mui/lab/LoadingButton';
+import SendIcon from '@mui/icons-material/Send';
 
 
 const theme = createTheme({
@@ -47,10 +49,10 @@ export default function SearchForm() {
   const [budgetValue, setBudgetValue] = useState(250);
   const [flyTimeframe, setFlyTimeframe] = useState(14);
   const [searchParams, setSearchParams] = useState('');
+  const [loading, setLoading] = useState(false)
 
-  const searchFormParams = () => {
+  function searchFormParams() {
     const apCodes = [airportList.map(airport => airport.code)].toString();
-    
     const dateOptions = {
       day: 'numeric',
       month: 'numeric',
@@ -77,8 +79,13 @@ export default function SearchForm() {
       one_per_date: 1,
       curr: 'GBP',
     })
-    setSearchParams(searchReq)
-  }
+    setSearchParams(searchReq);
+  };
+
+  function handleClick() {
+    setLoading(true)
+    searchFormParams()
+  };
 
   const CustomListBG = (props) => {
     return <Paper style={{ backgroundColor: 'rgba(255, 255, 255, 0.80)'}} {...props} />
@@ -95,9 +102,14 @@ export default function SearchForm() {
             action={`/results/${searchParams}`}
             params={searchParams}
           >
-            <Box className='sf-bg' id='sf-bg' component={motion.div} initial={{ opacity: 0, transition: { delay: 0.5, duration: 1.5, ease } }}
-            animate={{ opacity: 1, transition: { delay :0.5, duration: 1.5, ease } }}
-            exit={{ opacity: 0, transition: { delay: 0.5, duration: 1.5, ease } }}>
+            <Box
+             className='sf-bg'
+             id='sf-bg'
+             component={motion.div}
+             initial={{ opacity: 0, transition: { delay: 0.5, duration: 1, ease } }}
+             animate={{ opacity: 1, transition: { delay :0.5, duration: 1, ease } }}
+             exit={{ opacity: 0, transition: { delay: 0.5, duration: 1, ease } }}
+            >
                 <Box sx={{ width: '95%' }}>
                   <h4>CHOOSE DEPARTURE AIRPORT</h4>
                   <Autocomplete
@@ -117,7 +129,7 @@ export default function SearchForm() {
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        label="Select Airport..."
+                        label="Select Airport"
                         placeholder="Type or click to search..."
                         color="primary"
                         sx={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.35)'}}
@@ -125,7 +137,6 @@ export default function SearchForm() {
                         required={airportList.length === 0} 
                       />
                     )}
-
                     renderOption={(props, option, { selected }) => (
                       <MenuItem
                         {...props}
@@ -143,7 +154,6 @@ export default function SearchForm() {
                         {selected && <CheckIcon />}
                       </MenuItem>
                     )}
-
                     renderTags={(tagValue, getTagProps) =>
                       tagValue.map((props, selected) => (
                         <Chip
@@ -264,29 +274,33 @@ export default function SearchForm() {
                       6 Months
                     </ToggleButton>
                   </ToggleButtonGroup>
-                </Box> 
-                  <Button
-                    id="sf-btn"
-                    sx={{
-                      width: '95%',
-                      border: '1px solid',
-                      px: 1,
-                      py: 1.5,
-                      fontSize: 16,
-                      textShadow: '1px 1px 4px rgba(0, 0, 0, 0.75)'
+                </Box>
+                <LoadingButton
+                  id="sf-btn"
+                  component={Button}
+                  sx={{
+                    width: '95%',
+                    border: '1px solid',
+                    px: 1,
+                    py: 1.5,
+                    fontSize: 16,
+                    textShadow: '1px 1px 4px rgba(0, 0, 0, 0.75)'
+                  }}
+                  variant="outlined"
+                  type="submit"
+                  loading={loading}
+                  endIcon={<SendIcon />}
+                  loadingIndicator={<img className="logo-img-spin" src="../fly_lt.png" width={36} height={36} alt="logo" />}
+                  onClick={() => {
+                      airportList.length > 0 && handleClick()
                     }}
-                    variant="outlined"
-                    type="submit"
-                    onClick={() => {
-                      airportList.length > 0 && searchFormParams()
-                    }}
-                  >
-                    Get Flights
-                  </Button>
+                >
+                  {!loading && <span>Get Flights</span>}
+                </LoadingButton>
               </Box>
         </Form>
         </AnimatePresence>
       </ThemeProvider>
     </>
   );
-}
+};

@@ -138,6 +138,22 @@ h4 {
   }
 }
 
+.logo-img-spin {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
 
 /*  RESULTS PAGE  */
 
@@ -227,8 +243,8 @@ h4 {
   justify-content: center;
   align-items: center;
   max-width: 550px;
-  margin: 1.2rem auto 2rem;
-  padding: 1.5rem 2rem 3rem;
+  margin: 1.2rem auto 2.2rem;
+  padding: 1.5rem 2rem 2.1rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.15);
@@ -255,7 +271,7 @@ h4 {
   color: #fff;
   letter-spacing: 1px;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.75);
-  padding: 0.874rem 1.5rem;
+  padding: 0.822rem 1.5rem;
   margin: auto;
 }
 
@@ -276,7 +292,7 @@ h4 {
   justify-content: center;
   align-items: center;
   max-width: 550px;
-  margin: 1.2rem auto 2rem;
+  margin: 1.2rem auto 2.2rem;
   padding: 1.5rem 2rem 3rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
@@ -287,7 +303,7 @@ h4 {
 
 .contact-bg p, .fd-title, .fd-text {
   margin: auto;
-  padding: 1.75rem 1.5rem;
+  padding: 0.822rem 1.5rem 1rem;
   color: #fff;
   letter-spacing: 1px;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.75);
@@ -296,6 +312,13 @@ h4 {
 .cf-bg {
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
+}
+
+@media only screen and (max-width: 425px) {
+  .contact-bg {
+    padding-left: 0.5rem;
+    padding-right:  0.5rem;
+  }
 }
 
 

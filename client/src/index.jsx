@@ -31,7 +31,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path='/' element={<SearchForm />} />
-      <Route path='/results/:searchParams' loader={resultsLoader} element={<ResultsPage />} />
+      <Route path='results/:searchParams' loader={resultsLoader} element={<ResultsPage />} />
       <Route path='/contact' element={<ContactForm />} />
       <Route path='/about' element={<AboutSection />} />
     </Route>

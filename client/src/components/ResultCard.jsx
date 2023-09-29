@@ -22,25 +22,25 @@ import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 
 
-const scrollBarStyle = {
+// const scrollBarStyle = {
 
-  scrollbarWidth: 'thin',
-  '&:hover::-webkit-scrollbar': {
-    display: 'block',
-    },
-    '&::-webkit-scrollbar': {
-    width: '0.512rem',
-    },
-    '&::-webkit-scrollbar-track': {
-    boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    },
-    '&::-webkit-scrollbar-thumb': {
-    backgroundColor: 'lightgrey',
-    height: '8px',
-    borderRadius: '8px',
-    },
-  };
+//   scrollbarWidth: 'thin',
+//   '&:hover::-webkit-scrollbar': {
+//     display: 'block',
+//     },
+//     '&::-webkit-scrollbar': {
+//     width: '0.512rem',
+//     },
+//     '&::-webkit-scrollbar-track': {
+//     boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+//     webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+//     },
+//     '&::-webkit-scrollbar-thumb': {
+//     backgroundColor: 'lightgrey',
+//     height: '8px',
+//     borderRadius: '8px',
+//     },
+//   };
 
 function ScrollToTop(props) {
   const { children } = props;
