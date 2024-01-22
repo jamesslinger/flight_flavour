@@ -167,6 +167,10 @@ h4 {
   backdrop-filter: blur(5px);
 }
 
+#info-btn {
+  margin-left: 0.8rem;
+}
+
 @media only screen and (max-width: 900px) {
 
   #dialog-content {
