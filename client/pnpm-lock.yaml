@@ -35,6 +35,9 @@ dependencies:
   framer-motion:
     specifier: ^10.13.2
     version: 10.13.2(react-dom@18.2.0)(react@18.2.0)
+  nodejs:
+    specifier: ^0.0.0
+    version: 0.0.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -7487,6 +7490,10 @@ packages:
 
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
+    dev: false
+
+  /nodejs@0.0.0:
+    resolution: {integrity: sha512-1V+0HwaB/dhxzidEFc4uJ3k52gLI4B6YBZgJIofjwYCSAkD6CI0me6TDBT2QM2nbGWNxCHcq9/wVynzQYZOhUg==}
     dev: false
 
   /normalize-path@3.0.0:
