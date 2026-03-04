@@ -1,15 +1,18 @@
-import { defer } from "react-router-dom"
-
-
 export async function resultsLoader ({ request, params }) { 
     const myHeaders = new Headers()
     myHeaders.append("apikey", process.env.REACT_APP_API_KEY)
     myHeaders.append("Content-Type", "application/json")
+    myHeaders.append("Access-Control-Allow-Methods", "GET, POST")
+    myHeaders.append("Access-Control-Allow-Origin", "*")
+    myHeaders.append("Origin", "http://localhost:3000/")
+    myHeaders.append("Content-Encoding", "gzip")
+    myHeaders.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
     const requestOptions = {
         method: 'GET',
         headers: myHeaders,
-        redirect: 'follow'
+        redirect: 'follow',
+        mode: 'cors',
         }
 
     const url = new URL(process.env.REACT_APP_SEARCH_URL)
@@ -37,5 +40,5 @@ export async function resultsLoader ({ request, params }) {
         return destiGroup
     })
     .catch((error) => console.error('ERROR: Fetch error', error));
-    return defer ({ searchData })
+    return { searchData }
 }
