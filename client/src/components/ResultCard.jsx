@@ -101,7 +101,7 @@ export default function ResultCard(props) {
     let nums = []
     props.results.map((item) => nums.push(item.price))
     return Math.min(...nums)
-    }  
+  }
 
   const CustomPaperBG = (props) => {
     return <Paper style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', outline: 'none' }} {...props} />

@@ -16,7 +16,6 @@ import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Form } from "react-router-dom";
 import { airports } from "./airports";
-import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SendIcon from '@mui/icons-material/Send';
@@ -137,11 +136,13 @@ export default function SearchForm() {
                         required={airportList.length === 0} 
                       />
                     )}
-                    renderOption={(props, option, { selected }) => (
+                    renderOption={(props, option, { selected }) => {
+                      const { key, ...restProps } = props;
+                      return (
                       <MenuItem
-                        {...props}
+                        {...restProps}
+                        key={key}
                         id="sf-menu"
-                        key={uuidv4()}
                         value={option.code}
                         sx={{ 
                           color: 'rgba(0, 0, 0, 0.7)',
@@ -153,12 +154,15 @@ export default function SearchForm() {
                         {option.name} ({option.code})
                         {selected && <CheckIcon />}
                       </MenuItem>
-                    )}
+                      );
+                    }}
                     renderTags={(tagValue, getTagProps) =>
-                      tagValue.map((props, selected) => (
+                      tagValue.map((props, index) => {
+                        const { key, ...tagProps } = getTagProps({ index });
+                        return (
                         <Chip
                           icon={<FlightTakeoffSharpIcon />}
-                          key={uuidv4()}
+                          key={key}
                           variant="outlined"
                           color="primary"
                           label={props.name}
@@ -168,9 +172,10 @@ export default function SearchForm() {
                             boxShadow: 1,
                             textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)'
                           }}
-                          {...getTagProps({ selected })}
+                          {...tagProps}
                         />
-                        ))
+                        );
+                      })
                     }
                   />
                 </Box>

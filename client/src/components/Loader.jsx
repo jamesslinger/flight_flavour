@@ -1,12 +1,11 @@
 export async function resultsLoader ({ request, params }) { 
     const myHeaders = new Headers()
     myHeaders.append("apikey", process.env.REACT_APP_API_KEY)
-    myHeaders.append("Content-Type", "application/json")
-    myHeaders.append("Access-Control-Allow-Methods", "GET, POST")
-    myHeaders.append("Access-Control-Allow-Origin", "*")
-    myHeaders.append("Origin", "http://localhost:3000/")
-    myHeaders.append("Content-Encoding", "gzip")
-    myHeaders.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Content-Encoding", "gzip");
+    myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
+    myHeaders.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    myHeaders.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
     const requestOptions = {
         method: 'GET',
@@ -15,11 +14,11 @@ export async function resultsLoader ({ request, params }) {
         mode: 'cors',
         }
 
-    const url = new URL(process.env.REACT_APP_SEARCH_URL)
+    const url = new URL(process.env.REACT_APP_SEARCH_URL, window.location.origin)
     const newParams = new URLSearchParams(params.searchParams)
-    const newUrl = new URL(`${url}?${newParams}`)
+    url.search = newParams.toString()
     
-    const searchData = await fetch(newUrl, requestOptions)
+    const searchData = await fetch(url, requestOptions)
     .then((response) => {
         if (response.ok) {
             return response.json();
