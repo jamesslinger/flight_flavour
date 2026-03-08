@@ -57,6 +57,27 @@ app.use('/api', createProxyMiddleware({
       proxyReq.setHeader('apikey', apiKey);
     }
   },
+  onProxyRes: (proxyRes, req, res) => {
+    // Ensure CORS headers are present on proxied responses
+    const origin = req.headers.origin;
+    
+    if (!origin) return;
+    
+    const allowedOrigins = [
+      'https://flightflavour.com',
+      'https://www.flightflavour.com',
+      'http://localhost:3000',
+      'http://localhost:3001',
+      process.env.FRONTEND_URL
+    ];
+    
+    if (allowedOrigins.includes(origin)) {
+      proxyRes.headers['Access-Control-Allow-Origin'] = origin;
+      proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
+      proxyRes.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
+      proxyRes.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, apikey';
+    }
+  },
   onError: (err, req, res) => {
     console.error('Proxy error:', err);
     res.status(500).json({ error: 'API proxy error', message: err.message });
