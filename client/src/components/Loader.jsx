@@ -22,18 +22,25 @@ export async function resultsLoader ({ request, params }) {
         redirect: 'follow'
         }
 
-    // In production, we need to handle CORS differently since there's no proxy
-    if (environment === 'production') {
+    // Set up the API URL based on environment
+    let apiUrl;
+    if (environment === 'production' && process.env.REACT_APP_PROXY_URL) {
+        // Use the proxy server URL for production
+        apiUrl = new URL(searchUrl, process.env.REACT_APP_PROXY_URL);
         requestOptions.mode = 'cors';
-        // The API server should handle CORS headers in the response
+        // The proxy server handles CORS headers
+    } else {
+        // Use relative URL for development (proxy) or direct URL
+        apiUrl = new URL(searchUrl, window.location.origin);
+        if (environment === 'production') {
+            requestOptions.mode = 'cors';
+        }
     }
-    // In development, the proxy handles CORS, so no special mode needed
 
-    const url = new URL(searchUrl, window.location.origin)
     const newParams = new URLSearchParams(params.searchParams)
-    url.search = newParams.toString()
+    apiUrl.search = newParams.toString()
     
-    const searchData = await fetch(url, requestOptions)
+    const searchData = await fetch(apiUrl, requestOptions)
     .then((response) => {
         if (response.ok) {
             return response.json();

@@ -49,18 +49,18 @@ npm start
 
 The development server uses a proxy to avoid CORS issues.
 
-## Production Build
+## Production Deployment
 
-For production deployment:
+For production deployment on Render.com:
 
-```bash
-# Create production environment file
-cp .env.example .env.production
-# Edit .env.production with your production API key
+1. **Deploy the backend proxy first** (see `../RENDER_DEPLOYMENT.md`)
+2. **Update `.env.production`** with your Render.com backend URL:
+   ```env
+   REACT_APP_PROXY_URL=https://your-backend-service.onrender.com
+   ```
+3. **Build and deploy** using `npm run build:prod`
 
-# Build for production
-npm run build:prod
-```
+The production setup uses a backend proxy to avoid CORS issues with the Kiwi API.
 
 ## Security Notes
 
