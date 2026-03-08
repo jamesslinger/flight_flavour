@@ -12,7 +12,7 @@ const allowedOrigins = [
   'http://localhost:3001'
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function(origin, callback) {
     // Allow requests with no origin (like mobile apps or server requests)
     if (!origin) return callback(null, true);
@@ -25,12 +25,18 @@ app.use(cors({
       if (origin === frontendUrl) {
         callback(null, true);
       } else {
+        console.log(`CORS blocked origin: ${origin}`);
         callback(new Error('Not allowed by CORS'));
       }
     }
   },
-  credentials: true
-}));
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'apikey']
+};
+
+// Apply CORS globally
+app.use(cors(corsOptions));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -53,7 +59,7 @@ app.use('/api', createProxyMiddleware({
   },
   onError: (err, req, res) => {
     console.error('Proxy error:', err);
-    res.status(500).json({ error: 'API proxy error' });
+    res.status(500).json({ error: 'API proxy error', message: err.message });
   }
 }));
 
