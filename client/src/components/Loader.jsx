@@ -1,20 +1,35 @@
 export async function resultsLoader ({ request, params }) { 
+    // Check for required environment variables
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const searchUrl = process.env.REACT_APP_SEARCH_URL;
+    const environment = process.env.REACT_APP_ENVIRONMENT || 'development';
+
+    if (!apiKey) {
+        throw new Error('REACT_APP_API_KEY is not set. Please check your .env file.');
+    }
+
+    if (!searchUrl) {
+        throw new Error('REACT_APP_SEARCH_URL is not set. Please check your .env file.');
+    }
+
     const myHeaders = new Headers()
-    myHeaders.append("apikey", process.env.REACT_APP_API_KEY)
+    myHeaders.append("apikey", apiKey)
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Content-Encoding", "gzip");
-    myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
-    myHeaders.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    myHeaders.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
     const requestOptions = {
         method: 'GET',
         headers: myHeaders,
-        redirect: 'follow',
-        mode: 'cors',
+        redirect: 'follow'
         }
 
-    const url = new URL(process.env.REACT_APP_SEARCH_URL, window.location.origin)
+    // In production, we need to handle CORS differently since there's no proxy
+    if (environment === 'production') {
+        requestOptions.mode = 'cors';
+        // The API server should handle CORS headers in the response
+    }
+    // In development, the proxy handles CORS, so no special mode needed
+
+    const url = new URL(searchUrl, window.location.origin)
     const newParams = new URLSearchParams(params.searchParams)
     url.search = newParams.toString()
     
