@@ -4,9 +4,31 @@ const cors = require('cors');
 
 const app = express();
 
-// Enable CORS for all routes
+// Enable CORS with flexible origin handling
+const allowedOrigins = [
+  'https://flightflavour.com',
+  'https://www.flightflavour.com',
+  'http://localhost:3000',
+  'http://localhost:3001'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or server requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      // Allow based on environment variable for flexibility
+      const frontendUrl = process.env.FRONTEND_URL;
+      if (origin === frontendUrl) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    }
+  },
   credentials: true
 }));
 
