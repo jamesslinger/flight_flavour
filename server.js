@@ -43,6 +43,9 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Handle preflight OPTIONS requests explicitly BEFORE proxy
+app.options('/api/*', cors(corsOptions));
+
 // Proxy API requests to Kiwi.com
 app.use('/api', createProxyMiddleware({
   target: 'https://api.tequila.kiwi.com',
