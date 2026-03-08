@@ -57,5 +57,5 @@ export async function resultsLoader ({ request, params }) {
         return destiGroup
     })
     .catch((error) => console.error('ERROR: Fetch error', error));
-    return { searchData }
+    return { searchData };
 }

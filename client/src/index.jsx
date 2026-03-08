@@ -15,6 +15,7 @@ import { resultsLoader } from "./components/Loader"
 import "./index.css";
 import ContactForm from "./components/ContactForm";
 import AboutSection from "./components/AboutSection";
+import ErrorPage from "./components/ErrorPage";
 
 
 function Layout() {
@@ -29,9 +30,9 @@ function Layout() {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Layout />}>
+    <Route element={<Layout />} errorElement={<ErrorPage />}>
       <Route path='/' element={<SearchForm />} />
-      <Route path='results/:searchParams' loader={resultsLoader} element={<ResultsPage />} />
+      <Route path='results/:searchParams' loader={resultsLoader} element={<ResultsPage />} errorElement={<ErrorPage />} />
       <Route path='/contact' element={<ContactForm />} />
       <Route path='/about' element={<AboutSection />} />
     </Route>
