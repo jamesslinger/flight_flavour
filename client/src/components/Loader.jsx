@@ -24,17 +24,13 @@ export async function resultsLoader ({ request, params }) {
 
     // Set up the API URL based on environment
     let apiUrl;
-    if (environment === 'production' && process.env.REACT_APP_PROXY_URL) {
-        // Use the proxy server URL for production
-        apiUrl = new URL(searchUrl, process.env.REACT_APP_PROXY_URL);
-        requestOptions.mode = 'cors';
-        // The proxy server handles CORS headers
+    if (environment === 'production') {
+        // Use CORS proxy in production
+        apiUrl = new URL(searchUrl);
+        // CORS proxy handles CORS headers, no need for special mode
     } else {
-        // Use relative URL for development (proxy) or direct URL
+        // Use relative URL for development (proxy)
         apiUrl = new URL(searchUrl, window.location.origin);
-        if (environment === 'production') {
-            requestOptions.mode = 'cors';
-        }
     }
 
     const newParams = new URLSearchParams(params.searchParams)
