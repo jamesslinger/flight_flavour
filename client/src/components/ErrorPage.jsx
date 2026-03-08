@@ -7,6 +7,25 @@ export default function ErrorPage() {
   const error = useRouteError();
   console.error('Route error:', error);
 
+  const getErrorDebugInfo = () => {
+    try {
+      if (!error) {
+        return 'No error information available';
+      }
+      
+      const errorObj = {
+        status: error.status,
+        statusText: error.statusText,
+        message: error.message,
+        data: error.data
+      };
+      
+      return JSON.stringify(errorObj, null, 2);
+    } catch (e) {
+      return `Error Status: ${error?.status || 'Unknown'}\nError Message: ${error?.statusText || error?.message || 'Unknown error'}\nSerialization Error: ${e?.message}`;
+    }
+  };
+
   return (
     <Container maxWidth="md" sx={{ mt: 4 }}>
       <Box
@@ -59,38 +78,7 @@ export default function ErrorPage() {
           Sorry! Something went wrong...
         </Typography>
 
-        <Typography
-          variant="body1"
-          sx={{
-            mb: 3,
-            color: '#ffffff',
-            textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
-            position: 'relative',
-            zIndex: 1
-          }}
-        >
-          {error?.statusText ||
-           error?.message ||
-           'An unexpected error occurred while loading this page.'}
-        </Typography>
-
-        {error?.status === 404 && (
-          <Typography
-            variant="body2"
-            sx={{
-              mb: 3,
-              fontStyle: 'italic',
-              color: '#ffffff',
-              textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
-              position: 'relative',
-              zIndex: 1
-            }}
-          >
-            The page you're looking for doesn't exist.
-          </Typography>
-        )}
-
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
+        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', position: 'relative', zIndex: 1, mt: 8 }}>
           <Button
             variant="contained"
             component={Link}
@@ -169,10 +157,18 @@ export default function ErrorPage() {
                 p: 1,
                 borderRadius: 1,
                 overflow: 'auto',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word'
               }}
             >
-              {JSON.stringify(error, null, 2)}
+              {(() => {
+                try {
+                  return getErrorDebugInfo();
+                } catch (e) {
+                  return `Error Debug Retrieval Failed: ${e?.message || 'Unknown error'}`;
+                }
+              })()}
             </Typography>
           </Box>
         )}
